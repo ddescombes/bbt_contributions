@@ -33,7 +33,7 @@
                                     echo "<div class='row'>";
                                     echo "<div class='col-lg-4'>";
                                             echo "<p>".form_label('Env No:');?>
-                                            <input type="text" readonly class="form-control" id="env_no" name="env_no" value="<?php echo $assignment_item['env_no']?>"/></p>
+                                            <input type="text" readonly class="form-control" style="color:white;" id="env_no" name="env_no" value="<?php echo $assignment_item['env_no']?>"/></p>
                                             <?php
                                             echo "<p>".form_label('Addrsess:');
                                             echo form_input(array('required'=>'required','id'=>'address', 'name'=>'address', 'class'=>'form-control', 'value'=>$assignment_item['address']))."</p>";
