@@ -59,6 +59,11 @@ class Assignment extends CI_Controller {
     public function update()
     {
         $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('env_no', 'Env No', 'required');
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('env', 'Total', 'required');
+        $this->form_validation->set_rules('assigned', 'Assigned', 'required');
         $this->assignment_model->update_assignment();
         $this->list();
     }
