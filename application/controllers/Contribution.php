@@ -60,7 +60,7 @@ class Contribution extends CI_Controller {
         else 
         {
             $this->contribution_model->add_contribution();
-            $this->load_view('contributions/add_contribution', $data);
+            $this->load_view('contributions/success');
         }
     }
 
