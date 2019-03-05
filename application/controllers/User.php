@@ -28,7 +28,7 @@ class User extends CI_Controller
         else 
         {
             $this->user_model->add_user();
-            $this->load_view('user/add_user');
+            $this->load->view('user/success');
        }
     }
 
