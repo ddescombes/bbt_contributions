@@ -17,6 +17,11 @@
             {
                 document.getElementById("date").valueAsDate = new Date();
             }
+
+        function setDate()
+        {
+            document.getElementById("date").valueAsDate = new Date();
+        }
         </script>
     </head>
     <body style="background-color:#355980" onload="setDate()">
