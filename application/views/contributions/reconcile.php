@@ -59,41 +59,44 @@
                              echo '</td><td tyle="width: 90px;" id="giftdate:'.$contribution_item['EnvSysID'].'">';
                              echo $contribution_item['giftdate'];
                              echo '</td><td style="width: 90px;" id="regular:'.$contribution_item['EnvSysID'].'">$';
-                             echo number_format($contribution_item['regular']);
+                             echo number_format($contribution_item['regular'], 2);
                              echo '</td><td style="width: 90px;" id="missions:'.$contribution_item['EnvSysID'].'">$';
-                             echo number_format($contribution_item['missions']);
+                             echo number_format($contribution_item['missions'], 2);
                              echo '</td><td style="width: 90px;" id="special:'.$contribution_item['EnvSysID'].'">$';
-                             echo number_format($contribution_item['special']);
+                             echo number_format($contribution_item['special'], 2);
                              echo '</td><td tyle="width: 90px;" id="special_taxed:'.$contribution_item['EnvSysID'].'">';
                              if($contribution_item['special'] != '')
                              {
-                                    if($contribution_item['special_taxed'] == 1)
-                                    {
-                                        echo "True";
-                                    }
-                                    else 
-                                    {
-                                        echo "False";
-                                    }
+                                if($contribution_item['special_taxed'] == 1)
+                                {
+                                    echo "True";
+                                }
+                                else 
+                                {
+                                    echo "False";
+                                }
                              }
                              echo '</td><td tyle="width: 90px;" id="other:'.$contribution_item['EnvSysID'].'">$';
-                             echo number_format($contribution_item['other']);
+                             echo number_format($contribution_item['other'], 2);
                              echo '</td><td style="width: 90px;" id="other_taxed:'.$contribution_item['EnvSysID'].'">';
                              if($contribution_item['other'] != '')
                              {
-                                    if($contribution_item['other_taxed'] == 1)
-                                    {
-                                        echo "True";
-                                    }
-                                    else 
-                                    {
-                                        echo "False";
-                                    }
+                                if($contribution_item['other_taxed'] == 1)
+                                {
+                                    echo "True";
+                                }
+                                else 
+                                {
+                                    echo "False";
+                                }
                              }
                              echo '</td><td style="width: 90px;" id="total:'.$contribution_item['EnvSysID'].'">$';
-                             echo number_format($contribution_item['total']);
+                             echo number_format($contribution_item['total'], 2);
                              echo '</td><td style="width: 90px;" id="remark:'.$contribution_item['EnvSysID'].'">';
-                             echo $contribution_item['remarks'];
+                             if(strlen($contribution_item['remarks'])>1)
+                             {
+                                echo $contribution_item['remarks']; 
+                             }
                              echo '</td><td style="width: 90px;" id="check_no:'.$contribution_item['EnvSysID'].'">';
                              echo $contribution_item['check_no'];
                              echo '</td><td><a href="'.base_url('contribution/edit_contribution/').$contribution_item['EnvSysID'].'"><i class="far fa-edit"></i></a></td>';

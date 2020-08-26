@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost:3306',
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'church',
+	'hostname' => 'localhost',
+	'username' => 'dbeaver',
+	'password' => 'PDMcqt87#1',
+	'database' => 'contribute_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => TRUE,

@@ -8,8 +8,13 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript">
+            focusMethod = function getFocus(){
+                document.getElementById("add").focus();
+            }
+        </script>
     </head>
-    <body style="background-color:#355980">
+    <body style="background-color:#355980" onload="focusMethod()">
         <div class="container" style="max-width: 1400px">
             <div class="bs-component">
               <?php 
@@ -31,7 +36,7 @@
                         </div>
                         <div class="form-row">
                     <div class="form-group col-md-12" style="text-align: right">
-                        <a href="<?php echo base_url('contribution/add_contribution');?>"><button class="btn btn-primary">Add Another Contribution</button></a>
+                        <a href="<?php echo base_url('contribution/add_contribution');?>"><button id="add" class="btn btn-primary">Add Another Contribution</button></a>
                         <a href="<?php echo base_url('contribution/reconcile');?>"><button class="btn btn-primary">Go to Reconcile</button></a>
                     </div>
                 </div>

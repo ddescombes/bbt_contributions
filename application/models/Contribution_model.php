@@ -55,6 +55,7 @@ class Contribution_model extends CI_Model {
         $this->db->select('env_no, name');
         $this->db->from('assignments');
         $this->db->order_by('env_no');
+	$this->db->where('active', true);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -62,9 +63,9 @@ class Contribution_model extends CI_Model {
     public function add_contribution()
     {
         $this->load->helper('url');
-        $deductable = number_format($this->input->post('general')) + number_format($this->input->post('missions'));
+        $deductable = number_format($this->input->post('general'),2) + number_format($this->input->post('missions'),2);
         $specialTaxable = 0;
-        $otherTaxble = 0;
+        $otherTaxable = 0;
 
         if (isset($_POST['tax_special']))
         $specialTaxable = 1;
@@ -74,12 +75,12 @@ class Contribution_model extends CI_Model {
 
         if($specialTaxable == 0)
         {
-            $deductable = number_format($deductable) + number_format($this->input->post('special'));
+            $deductable = number_format($deductable,2) + number_format($this->input->post('special'),2);
         }
 
-        if($otherTaxble == 0)
+        if($otherTaxable == 0)
         {
-            $deductable = number_format($deductable) + number_format($this->input->post('other'));
+            $deductable = number_format($deductable,2) + number_format($this->input->post('other'),2);
         }
         $data = array(
                 'giftdate' => $this->input->post('date'),
@@ -90,10 +91,14 @@ class Contribution_model extends CI_Model {
                 'special' => $this->input->post('special'),
                 'special_taxed' => $specialTaxable,
                 'other' => $this->input->post('other'),
-                'other_taxed' => $otherTaxble,
+                'other_taxed' => $otherTaxable,
                 'total' => $this->input->post('total'),
                 'deductable' => $deductable,
-                'remarks' => $this->input->post('special_remarks') . ';' . $this->input->post('other_remarks')
+                'remarks' => $this->input->post('special_remarks') . ';' . $this->input->post('other_remarks'),
+                'regular_fee' => $this->input->post('general_fee'),
+                'missions_fee' => $this->input->post('missions_fee'),
+                'special_fee' => $this->input->post('special_fee'),
+                'other_fee' => $this->input->post('other_fee')
             );
 
         return $this->db->insert('Contributions2', $data);
@@ -101,7 +106,6 @@ class Contribution_model extends CI_Model {
 
     public function update_contribution()
     {
-
         if(!empty($_POST))
         {
             $this->load->helper('url');
@@ -137,7 +141,11 @@ class Contribution_model extends CI_Model {
                 'total' => $this->input->post('total'),
                 'deductable' => $deductable,
                 'remarks' => $this->input->post('special_remarks') . ';' . $this->input->post('other_remarks'),
-                'EnvSysID'=>$this->input->post('EnvSysID')
+                'EnvSysID'=>$this->input->post('EnvSysID'),
+                'regular_fee' => $this->input->post('general_fee'),
+                'missions_fee' => $this->input->post('missions_fee'),
+                'special_fee' => $this->input->post('special_fee'),
+                'other_fee' => $this->input->post('other_fee')
             );
             echo $specialTaxable;
             echo $otherTaxable;

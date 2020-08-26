@@ -9,8 +9,6 @@
 
         public function add_user()
         {
-            if(!isset($_SESSION['isLoggedIn']))
-            {
                 if(!empty($_POST))
                 {
                     $data = array(
@@ -20,7 +18,6 @@
                         'password' => md5($this->db->escape($this->input->post('password'))));
                         return $this->db->insert('User', $data);
                 }
-            }
         }
 
         public function login()
