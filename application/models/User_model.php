@@ -11,15 +11,12 @@
         {
             if(!isset($_SESSION['isLoggedIn']))
             {
-                if(!empty($_POST))
-                {
                     $data = array(
                         'first_name' => $this->input->post('first_name'),
                         'last_name' => $this->input->post('last_name'),
                         'user_name' => $this->db->escape($this->input->post('user_name')),
                         'password' => md5($this->db->escape($this->input->post('password'))));
-                        return $this->db->insert('User', $data);
-                }
+                    return $this->db->insert('User', $data);
             }
         }
 

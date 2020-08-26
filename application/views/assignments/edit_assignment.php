@@ -28,37 +28,37 @@
                             ?>
                             <?php 
                                 foreach ($assignments as $assignment_item):
-
                                     echo "<div class='bs-docs-section'>";
                                     echo "<div class='row'>";
                                     echo "<div class='col-lg-4'>";
                                             echo "<p>".form_label('Env No:');?>
-                                            <input type="text" readonly class="form-control" style="color:white;" id="env_no" name="env_no" value="<?php echo $assignment_item['env_no']?>"/></p>
+                                            <input type="text" style="color:white;" readonly class="form-control" id="env_no" name="env_no" value="<?php echo set_value('env_no', $assignment_item['env_no'])?>"/></p>
                                             <?php
-                                            echo "<p>".form_label('Addrsess:');
-                                            echo form_input(array('required'=>'required','id'=>'address', 'name'=>'address', 'class'=>'form-control', 'value'=>$assignment_item['address']))."</p>";
+                                            echo "<p>".form_label('Address:');
+                                            echo form_input(array('id'=>'address', 'name'=>'address', 'class'=>'form-control', 'value'=>set_value('address', $assignment_item['address'])))."</p>";
                                             echo "<p>".form_label('Zip:');
-                                            echo form_input(array('required'=>'required','id'=>'zip', 'name'=>'zip', 'class'=>'form-control', 'value'=>$assignment_item['zip']))."</p>";
+                                            echo form_input(array('id'=>'zip', 'name'=>'zip', 'class'=>'form-control', 'value'=>set_value('zip',$assignment_item['zip'])))."</p>";
                                             
                                         echo "</div>";
                                         echo "<div class='col-lg-4'>";
-                                        
+                                            echo "<div class='text-danger'>".form_error('assigned')."</div>";
                                             echo "<p>".form_label('Assigned:');
-                                            echo form_input(array('type'=>'date','id'=>'assigned', 'name'=>'assigned', 'class'=>'form-control', 'value'=>$assignment_item['assigned']))."</p>";
+                                            echo form_input(array('type'=>'date','id'=>'assigned', 'name'=>'assigned', 'class'=>'form-control', 'value'=>set_value('assigned',$assignment_item['assigned'])))."</p>";
                                             echo "<p>".form_label('City:');
-                                            echo form_input(array('required'=>'required','id'=>'city', 'name'=>'city', 'class'=>'form-control', 'value'=>$assignment_item['city']))."</p>";
+                                            echo form_input(array('id'=>'city', 'name'=>'city', 'class'=>'form-control', 'value'=>set_value('city', $assignment_item['city'])))."</p>";
+                                            echo "<div class='text-danger'>".form_error('env')."</div>";
                                             echo "<p>".form_label('Has Envelopes:');
-                                            echo form_input(array('required'=>'required','id'=>'env', 'name'=>'env', 'class'=>'form-control', 'value'=>$assignment_item['env']))."</p>";
+                                            echo form_input(array('id'=>'env', 'name'=>'env', 'class'=>'form-control', 'value'=>set_value('env', $assignment_item['env'])))."</p>";
                                     
                                         echo "</div>";
                                         echo "<div class='col-lg-4'>";
-                                            
+                                            echo "<div class='text-danger'>".form_error('name')."</div>";
                                             echo "<p>".form_label('Name:');
-                                            echo form_input(array('required'=>'required','id'=>'name', 'name'=>'name', 'class'=>'form-control', 'value'=>$assignment_item['name']))."</p>";
+                                            echo form_input(array('id'=>'name', 'name'=>'name', 'class'=>'form-control', 'value'=>set_value('name',$assignment_item['name'])))."</p>";
                                             echo "<p>".form_label('State:');
-                                            echo form_input(array('required'=>'required','id'=>'state', 'name'=>'state', 'class'=>'form-control', 'value'=>$assignment_item['state']))."</p>";
+                                            echo form_input(array('id'=>'state', 'name'=>'state', 'class'=>'form-control', 'value'=>set_value('state', $assignment_item['state'])))."</p>";
                                             echo "<p>".form_label('Released:');
-                                            echo form_input(array('type'=>'date','id'=>'released', 'name'=>'released', 'class'=>'form-control', 'value'=>$assignment_item['released']))."</p>";
+                                            echo form_input(array('type'=>'date','id'=>'released', 'name'=>'released', 'class'=>'form-control', 'value'=>set_value('released', $assignment_item['released'])))."</p>";
                                             
                                         echo "</div>";
                                     echo "</div>";

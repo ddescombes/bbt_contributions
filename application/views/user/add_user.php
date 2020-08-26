@@ -32,14 +32,14 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="first_name" class="alert-link" >First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" required value="<?php echo set_value('first_name'); ?>" >
+                        <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo set_value('first_name'); ?>" >
                         <div class="invalid-feedback">
                             <b>Please enter a first name.</b>
                         </div>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="last_name" class="alert-link" >Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" required value="<?php echo set_value('last_name'); ?>" >
+                        <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo set_value('last_name'); ?>" >
                         <div class="invalid-feedback">
                             <b>Please enter a last name.</b>
                         </div>
@@ -48,14 +48,14 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="user_name" class="alert-link" >User Name</label>
-                        <input type="text" class="form-control" id="user_name" name="user_name" required value="<?php echo set_value('user_name'); ?>" >
+                        <input type="text" class="form-control" id="user_name" name="user_name" value="<?php echo set_value('user_name'); ?>" >
                         <div class="invalid-feedback">
                             <b>Please enter a user name.</b>
                         </div>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="password" class="alert-link" >Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required value="<?php echo set_value('password'); ?>" >
+                        <input type="password" class="form-control" id="password" name="password" value="<?php echo set_value('password'); ?>" >
                         <div class="invalid-feedback">
                             <b>Please enter a password.</b>
                         </div>

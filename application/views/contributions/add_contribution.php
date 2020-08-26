@@ -21,9 +21,14 @@
             input.setCustomValidity('');
             }
             }
+
+        function setDate()
+        {
+            document.getElementById("date").valueAsDate = new Date();
+        }
         </script>
     </head>
-    <body style="background-color:#355980">
+    <body style="background-color:#355980" onload="setDate()">
         <div class="container">
             <div class="bs-component">
                 <?php 
@@ -75,7 +80,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <label for="general" class="alert-link" >General</label>
-                        <input type="number" class="form-control" id="general" name="general" required value="<?php echo set_value('general', 0); ?>">
+                        <input type="number" step=".01" class="form-control" id="general" name="general" required value="<?php echo set_value('general', 0); ?>">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="missions" class="alert-link" >Missions</label>

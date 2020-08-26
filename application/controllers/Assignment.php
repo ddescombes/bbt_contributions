@@ -56,11 +56,24 @@ class Assignment extends CI_Controller {
         }
     }
 
-    public function update()
+    public function update($id = NULL)
     {
         $this->load->helper('form');
-        $this->assignment_model->update_assignment();
-        $this->list();
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('env', 'Env No', 'required');
+        $this->form_validation->set_rules('assigned', 'Assigned', 'required');
+        if ($this->form_validation->run() === FALSE)
+        {
+            $data['assignments'] = $this->assignment_model->get_assignment_by_id($_POST['env_no']);
+            $this->load_view('assignments/edit_assignment', $data);
+        }
+        else
+        {
+            $this->assignment_model->update_assignment();
+            $this->list();
+        }
+        
     }
 
     private function load_view($view, $data = null)
