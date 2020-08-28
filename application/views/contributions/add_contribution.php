@@ -15,16 +15,16 @@
         <script language='javascript' type='text/javascript'>
             function setDate()
             {
-                document.getElementById("date").valueAsDate = new Date();
+                document.getElementById("date").value = new Date().toDateInputValue();;
             }
-
-        function setDate()
-        {
-            document.getElementById("date").valueAsDate = new Date();
-        }
+            Date.prototype.toDateInputValue = (function() {
+                var local = new Date(this);
+                local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                return local.toJSON().slice(0,10);
+            });
         </script>
     </head>
-    <body style="background-color:#355980" onload="setDate()">
+    <body style="background-color:#355980" onload=setDate()>
         <div class="container">
             <div class="bs-component">
                 <?php 
@@ -40,15 +40,17 @@
                     </div>
                 </div>
             <?php 
+                
                 echo "<ul>";
                 echo validation_errors('<li style="color: red;"><span class="label label-danger">', '</span></li>');
                 echo "</ul>";
                 $attributes = array('class' => 'needs-validation', 'id' => 'input_form');
-                echo form_open(base_url('contribution/add_contribution'), $attributes); ?>
+                echo form_open(base_url('contribution/add_contribution'), $attributes); 
+                $now =  date('Y-m-d H:i:s');?>
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="date" class="alert-link" >Date</label>
-                        <input type="date" class="form-control" id="date" name="date" required value="<?php echo set_value(date('d-m-Y')); ?>" >
+                        <input type="date" class="form-control" id="date" name="date" required value="<?php echo set_value($now); ?>" >
                         <div class="invalid-feedback">
                             <b>Please enter a valid date.</b>
                         </div>
