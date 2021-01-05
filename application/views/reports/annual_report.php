@@ -1,60 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Annual Report</title>
+    <link rel="stylesheet" href="<?php echo $this->config->item('asset_base')?><?php echo $css?>/print.css">
+</head>
+<body>
+<hr>
+<p class="bbt_header">
+    <?php echo "<img style='padding_bottom:25px;' src=".$this->config->item('asset_base')."application/content/images/header.png>";?>
+    <br/>2601 Watson Blvd.<br/>
+    Warner Robins, GA 31093
+</p>
+<hr>
 <?php
-//require(APPPATH.'libraries/fpdf/fpdf.php');
-
-class PDF extends FPDF
-{
-// Page header
-function Header()
-{
-    // Logo
-    //$this->Image('logo.png',10,6,30);
-    // Arial bold 15
-    $this->SetFont('Arial','I',15);
-    // Move to the right
-    $this->Cell(80);
-    // Title
-    $this->Cell(30,10,'Bible Baptist Temple',0,0,'C');
-    $this->Ln(7);
-    $this->Cell(80);
-    $this->Cell(30,10,'2601 Watson Blvd',0,0,'C');
-    $this->Ln(7);
-    $this->Cell(80);
-    $this->Cell(30,10,'Warner Robins, GA 31093',0,0,'C');
-    // Line break
-    $this->Ln(5);
-}
-
-// Page footer
-function Footer()
-{
-    // Position at 1.5 cm from bottom
-    $this->SetY(-30);
-    // Arial italic 8
-    $this->SetFont('Arial','I',10);
-    $this->Cell(0,10,'None of your giving was done to receive anything in return except what the government considers an',0,1);
-    $this->Cell(0,0,'"intangible religious benefit.',0,1);
-    $this->Cell(0,10,'Please retain this letter for your records if you intend to claim this contribution as a deduction on',0,1);
-    $this->Cell(0,0,'Schedule A of your Federal Income Tax return. Thank you for your offerings to Bible Baptist Temple',0,1);
-    
-    // Page number
-    $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'R');
-}
-}
-
-// Instanciation of inherited class
-$pdf = new PDF();
-$pdf->AliasNbPages();
-$pdf->AddPage();
-$pdf->SetFont('Arial','I',10);
-$pdf->Cell(0,10,date("m/d/y"),0,1);
-$pdf->Cell(0,5,'Subject: '.date("Y").' Annual Contribution Record',0,1);
-$pdf->Cell(0,15,'Dear Mr. DesCombes',0,1);
-$pdf->Cell(0,5,'Our records indicate that you gave offerings totaling $1,000,000 to Bible Baptist Temple in 2017. Your',0,1);
-$pdf->Cell(0,5,'contributions were recorded as follows (40 detail records):',0,1);
-$pdf->Cell(0,20,'Envelope Number 4',0,1);
-
-$pdf->SetFont('Times','',12);
-for($i=1;$i<=40;$i++)
-    $pdf->Cell(0,10,'Printing line number '.$i,0,1);
-$pdf->Output();
+    echo "<p class="."bbt_text".">".date("m/d/Y")."<br/>";
+    echo "Subject: ".$year." Annual Contributions Record"."<br/><br/>";
+    echo "Dear ".$name.","."</br></br>";
+    echo "Our records indicate that you gave offerings totaling $".$contribution_total." to Bible Baptist Temple in ".$year.".<br/>";
+    echo "Your contributions were recorded as follows (".$num_contributions." detail records):";
+    echo "</p>";
+    echo "<p class="."bbt_text".">"."Envelope Number ".$env_no;
 ?>
+<hr>
+<div style="ppadding-bottom:50px;">
+    <?php
+    $printHeader = 1;
+    $q1printed = false;
+    $q2printed = false;
+    $q3printed = false;
+    $q4printed = false;
+    echo "<table>";
+    echo "<tr><td valign='top'>";
+    foreach ($contributions as $contribution_item)
+    {
+        $timestamp = strtotime($contribution_item['giftdate']);
+
+        switch (true){
+            case in_array(date('n', $timestamp), range(1,3)):
+                if($q1printed == false)
+                {
+                    echo "<table>";
+                    echo "<tr><td  colspan=2><b>Quarter ".$printHeader."-".$year."</b></td></tr>";
+                    $q1printed = true;
+                    $printHeader++;
+                    echo "<tr>";
+                    echo "<td>";
+                    echo $contribution_item['giftdate']; 
+                    echo "</td>";
+                    echo "<td>";
+                    echo "$".$contribution_item['deductable'];
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                else
+                {
+                    echo "<tr>";
+                    echo "<td>";
+                    echo $contribution_item['giftdate']; 
+                    echo "</td>";
+                    echo "<td>";
+                    echo "$".$contribution_item['deductable'];
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                break;
+            case in_array(date('n', $timestamp), range(4,6)):
+                if($q2printed == false)
+                {
+                    echo "</table>";
+                    echo "</td><td  valign='top'>";
+                    echo "<table>";
+                    echo "<tr><td  colspan=2><b>Quarter ".$printHeader."-".$year."</b></td></tr>";
+                    $q2printed = true;
+                    $printHeader++;
+                    echo "<tr>";
+                    echo "<td>";
+                    echo $contribution_item['giftdate']; 
+                    echo "</td>";
+                    echo "<td>";
+                    echo "$".$contribution_item['deductable'];
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                else
+                {
+                    echo "<tr>";
+                    echo "<td>";
+                    echo $contribution_item['giftdate']; 
+                    echo "</td>";
+                    echo "<td>";
+                    echo "$".$contribution_item['deductable'];
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                break;
+            case in_array(date('n', $timestamp), range(7,9)):
+            if($q3printed == false)
+            {
+                echo "</table>";
+                echo "</td><td  valign='top'>";
+                echo "<table>";
+                echo "<tr><td  colspan=2><b>Quarter ".$printHeader."-".$year."</b></td></tr>";
+                $q3printed = true;
+                $printHeader++;
+                echo "<tr>";
+                echo "<td>";
+                echo $contribution_item['giftdate']; 
+                echo "</td>";
+                echo "<td>";
+                echo "$".$contribution_item['deductable'];
+                echo "</td>";
+                echo "</tr>";
+            }
+            else
+            {
+                echo "<tr>";
+                echo "<td>";
+                echo $contribution_item['giftdate']; 
+                echo "</td>";
+                echo "<td>";
+                echo "$".$contribution_item['deductable'];
+                echo "</td>";
+                echo "</tr>";
+            }
+                break;
+            case in_array(date('n', $timestamp), range(10,12)):
+            if($q4printed == false)
+            {
+                echo "</table>";
+                echo "</td><td  valign='top'>";
+                echo "<table>";
+                echo "<tr><td  colspan=2><b>Quarter ".$printHeader."-".$year."</b></td></tr>";
+                $q4printed = true;
+                $printHeader++;
+                echo "<tr>";
+                echo "<td>";
+                echo $contribution_item['giftdate']; 
+                echo "</td>";
+                echo "<td>";
+                echo "$".$contribution_item['deductable'];
+                echo "</td>";
+                echo "</tr>";
+            }
+            else
+            {
+                echo "<tr>";
+                echo "<td>";
+                echo $contribution_item['giftdate']; 
+                echo "</td>";
+                echo "<td>";
+                echo "$".$contribution_item['deductable'];
+                echo "</td>";
+                echo "</tr>";
+            }
+                break;
+
+        }
+    }
+    echo "</table>";
+    echo "</td></tr>";
+    echo "</table>";
+    ?>
+    </div>
+    <div style="padding-top:120px; text-align:left;">
+    <p class="bbt_text">None of your giving was done to receive anything in return except what the government considers an "intangible religious benefit."</p>
+    <p class="bbt_text">Please retain this letter for your records if you intend to claim this contribution as a deduction on Schedule A of your Federal Income Tax Return.</p>
+    <p style="padding-bottom:35px;" class="bbt_text">Thank you for your offerings to Bible Baptist Temple.</p>
+    <?php echo "<img style='padding-left:25px' src=".$this->config->item('asset_base')."application/content/images/sig_combined.png />";?>
+    </div>
+</body>
+</html> 
