@@ -23,7 +23,7 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('report/create_pdf');?>">Annual Report</a>
+            <a class="nav-link" href="<?php echo base_url('report/index');?>">Annual Report</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('user/logout');?>">Logout</a>
