@@ -13,6 +13,7 @@
             $this->db->from('Contributions2');
             $this->db->where('YEAR(`giftdate`)',$year);
             $this->db->where('env_no',$env_no);
+            $this->db->where('deductable !=',0);
             $this->db->group_by('env_no');
             $regular_contributions = $this->db->get();
             foreach ($regular_contributions->result() as $row)
@@ -27,6 +28,7 @@
             $this->db->from('Contributions2');
             $this->db->where('YEAR(`giftdate`)',$year);
             $this->db->where('env_no',$env_no);
+            $this->db->where('deductable !=',0);
             $this->db->order_by('giftdate');
             $contributions = $this->db->get();
             return $contributions->result_array();
