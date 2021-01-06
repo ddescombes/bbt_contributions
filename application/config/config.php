@@ -27,8 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['base_url'] = 'http://localhost/contribution_web/index.php';
 $config['asset_base'] = 'http://localhost/contribution_web/';
 $config['js'] = 'scripts';
-$config['css']= 'application/content/css';
-$config['images']= 'application/content/images';
+$config['css']= 'css';
+$config['images']= 'images';
 /*
 |--------------------------------------------------------------------------
 | Index File

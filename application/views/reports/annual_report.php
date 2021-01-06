@@ -7,7 +7,7 @@
 <body>
 <hr>
 <p class="bbt_header">
-    <?php echo "<img style='padding_bottom:25px;' src=".$this->config->item('asset_base')."application/content/images/header.png>";?>
+    <?php echo "<img style='padding_bottom:25px;' src=".$this->config->item('asset_base')."images/header.png>";?>
     <br/>2601 Watson Blvd.<br/>
     Warner Robins, GA 31093
 </p>
@@ -165,8 +165,8 @@
     <div style="padding-top:120px; text-align:left;">
     <p class="bbt_text">None of your giving was done to receive anything in return except what the government considers an "intangible religious benefit."</p>
     <p class="bbt_text">Please retain this letter for your records if you intend to claim this contribution as a deduction on Schedule A of your Federal Income Tax Return.</p>
-    <p style="padding-bottom:35px;" class="bbt_text">Thank you for your offerings to Bible Baptist Temple.</p>
-    <?php echo "<img style='padding-left:25px' src=".$this->config->item('asset_base')."application/content/images/sig_combined.png />";?>
+    <p style="padding-bottom:35px;" class="bbt_text">Thank you for your offerings in support of the ministries of Bible Baptist Temple.</p>
+    <?php echo "<img style='padding-left:25px' src=".$this->config->item('asset_base')."images/sig_combined.png />";?>
     </div>
 </body>
 </html> 
